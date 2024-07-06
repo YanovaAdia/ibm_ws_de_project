@@ -1,10 +1,11 @@
 import glob
 import pandas as pd
+import numpy as np
 import xml.etree.ElementTree as ET 
 from datetime import datetime
 
 log_file = "log_file.txt" 
-target_file = "transformed_data.csv" 
+target_file = "final_data.csv" 
 
 def extract_from_csv(filename):
     df = pd.read_csv(filename)
@@ -41,5 +42,19 @@ def extract():
         extracted_df = pd.concat([extracted_df, extract_from_xml(xml)], ignore_index=True)
 
     return extracted_df
-a = extract()
-a.to_csv('test.csv')
+
+def transform(data):
+    data['height'] = np.round(data.height * 0.0254,2)
+    data['weight'] = np.round(data.weight * 0.45359237,2)
+    
+    return data
+
+def load_data(transformed_data):
+    transformed_data.to_csv(target_file)
+
+def logging_time(msg):
+    time_format = '%Y-%h-%d-%H:%M:%S'
+    now = datetime.now()
+    timestamp = now.strftime(time_format)
+    with open(log_file, 'a') as log:
+        log.write(f'{timestamp} : {msg} \n')

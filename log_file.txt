@@ -1,0 +1,8 @@
+2024-Jul-06-13:32:29 : ETL Job started 
+2024-Jul-06-13:32:29 : Extract process started 
+2024-Jul-06-13:32:29 : Extraction complete 
+2024-Jul-06-13:32:29 : Transform process started 
+2024-Jul-06-13:32:29 : Transformation completed 
+2024-Jul-06-13:32:29 : Load process started 
+2024-Jul-06-13:32:29 : Loading Completed 
+2024-Jul-06-13:32:29 : ETL Job ended 
